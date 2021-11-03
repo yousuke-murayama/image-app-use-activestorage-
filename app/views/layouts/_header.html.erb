@@ -6,6 +6,7 @@
         <li class="nav-item"><%= link_to 'HOME', root_path %></li>
       <% if logged_in? %>
         <li class="nav-item"><%= link_to 'Mypage', current_user %></li>
+        <li class="nav-item"><%= link_to '投稿', new_post_path %></li>
         <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       <% else %>
         <li class="nav-item"><%= link_to '登録はこちらから', signup_path %></li>

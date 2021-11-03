@@ -1,4 +1,16 @@
 <div>
-    <p><%= @user.name %></p>
-    <p><%= @user.profile %></p>
+  <p><%= @user.name %></p>
+  <p><%= @user.profile %></p>
+</div>
+
+<div>
+  <ul>
+    <% @posts.each do |post| %>
+    <li>
+      <p><%= post.spot %></p>
+      <p><%= post.content %></p>
+      <p><%= link_to "削除", post, method: :delete, class: 'btn btn-danger' %></p>
+    </li>
+    <% end %>
+  </ul>
 </div>
