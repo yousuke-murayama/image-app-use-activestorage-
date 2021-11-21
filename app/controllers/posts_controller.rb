@@ -2,6 +2,12 @@ class PostsController < ApplicationController
   before_action :require_logged_in
   before_action :correct_post, only: [:destroy]
   
+  def show
+    @post = Post.find(params[:id])
+    @comment = current_user.comments.build(post_id: @post.id)
+    @comments = @post.comments
+  end
+  
   def new
     @post = current_user.posts.build
   end
@@ -26,7 +32,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:spot, :content)
+    params.require(:post).permit(:image, :spot, :content)
   end
   
   def correct_post

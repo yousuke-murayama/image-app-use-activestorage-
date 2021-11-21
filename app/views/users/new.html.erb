@@ -4,23 +4,25 @@
   <div class="col-sm-6 offset-sm-3">
     <%= form_with(model: @user, url: signup_path, local: true) do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
+    
+      <div class="form-group">
+        <%= f.label :name, '名前' %>
+        <%= f.text_field :name, class: 'form-control' %>
       
-      <%= f.label :name, '名前' %>
-      <%= f.text_field :name, class: 'form-control' %>
-      
-      <%= f.label :email, 'メールアドレス' %>
-      <%= f.email_field :email, class: 'form-control' %>
-      
-      <%= f.label :profile, 'プロフィール' %>
-      <%= f.text_field :profile, class: 'form-control' %>
-      
-      <%= f.label :password, 'パスワード' %>
-      <%= f.password_field :password, class: 'form-control' %>
-      
-      <%= f.label :password_confirmation, '確認用パスワード' %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-      
-      <%= f.submit '登録', class: 'btn btn-primary btn-block mt-4' %>
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.email_field :email, class: 'form-control' %>
+        
+        <%= f.label :profile, 'プロフィール' %>
+        <%= f.text_field :profile, class: 'form-control' %>
+        
+        <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+        
+        <%= f.label :password_confirmation, '確認用パスワード' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+        
+        <%= f.submit '登録', class: 'btn btn-primary btn-block mt-4' %>
+      </div>  
     <% end %>
   </div>
 </div>

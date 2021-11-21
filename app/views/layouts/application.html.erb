@@ -7,13 +7,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
   </head>
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
-      <%= render 'layouts/flash_messages' %>
-      <%= yield %>
-    </div>
+    <main>
+      <div class="container">
+        <%= render 'layouts/flash_messages' %>
+        <%= yield %>
+      </div>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

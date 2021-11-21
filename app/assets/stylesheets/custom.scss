@@ -1,1 +1,139 @@
 @import "bootstrap";
+
+//ページ全体のデザイン
+body {
+    background-color: #f5fffa;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+    background-color: #ccffff;
+    .footer-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        p {
+            margin-top: 5px;
+            margin-bottom: 0;
+        }
+    }
+    .copy {
+        border-top: 1px solid #999999;
+    }
+}
+
+h1 {
+    text-align: center;
+    color: #66CCFF;
+}
+
+//トップページのデザイン
+.image-post {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    img {
+    margin-bottom: 30px;
+    }
+}
+
+.image-post::after {
+    display: block;
+    content:"";
+    width: 250px;
+}
+
+//投稿詳細ページのデザイン
+.post-detail {
+    margin-left: 20px;
+    border-top: solid 5px #00cc66;
+    border-bottom: solid 5px #00cc66;
+    p {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.comment-form {
+    border: double 4px #99ffcc;
+    margin-top: 20px;
+    h3 {
+        font-weight: bold;
+        color: #99ffcc;
+        font-size: 20px;
+    }
+    img {
+        border-radius: 50%;
+        margin-bottom: 5px;
+        margin-top: 15px;
+        margin-right: 5px;
+    }
+}
+
+//コメント欄
+.balloon {
+    position: relative;
+    display: inline-block;
+    margin: 0.5em 30px 1.1em 15px;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #e0edff;
+    word-break: break-all;
+    p {
+      margin: 0;
+      padding: 0;
+    }
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -30px;
+  margin-top: -15px;
+  border: 15px solid transparent;
+  border-right: 15px solid #e0edff;
+}
+
+//ユーザ詳細ページのデザイン
+.user-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 1px solid #0000ff;
+    margin-top: 10px;
+    img {
+        border-radius: 50%;
+        margin-bottom: 20px;
+        margin-right: 5px;
+    }
+    h3 {
+        margin-top: 15px;
+    }
+}
+
+.user-profile {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0000ff;
+}
+
+//登録ページのデザイン
+.user-icon {
+    border-radius: 50%;
+    margin-bottom: 20px;
+    margin-right: 5px;
+}

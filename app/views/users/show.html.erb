@@ -1,16 +1,7 @@
-<div>
-  <p><%= @user.name %></p>
-  <p><%= @user.profile %></p>
+<div class="user-data">
+  <%= image_tag "/assets/default.jpeg", :size => '70x70' %>
+  <h3>ユーザ名：<%= @user.name %></h3>
 </div>
+<p class="user-profile">プロフィール：<%= @user.profile %></p>
 
-<div>
-  <ul>
-    <% @posts.each do |post| %>
-    <li>
-      <p><%= post.spot %></p>
-      <p><%= post.content %></p>
-      <p><%= link_to "削除", post, method: :delete, class: 'btn btn-danger' %></p>
-    </li>
-    <% end %>
-  </ul>
-</div>
+<%= render 'posts/posts', posts: @posts %>

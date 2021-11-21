@@ -4,4 +4,6 @@ class Post < ApplicationRecord
   validates :spot, presence: true, length: { maximum: 50 }
   
   belongs_to :user
+  has_many :comments, dependent: :destroy
+  mount_uploader :image, ImageUploader
 end
