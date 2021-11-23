@@ -65,6 +65,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'ransack'
+gem 'dotenv-rails'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'

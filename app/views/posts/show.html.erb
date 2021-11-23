@@ -2,7 +2,7 @@
   <%= image_tag @post.image.url, size: "400x400", class: "col-sm-6" if @post.image? %>
   <div class="media-body col-sm-6">
     <div class="post-detail">
-      <h3>場所：<%= @post.spot %></h3>
+      <h3>場所：<%= link_to @post.spot, maps_path %></h3>
       <p>ユーザ名：<%= link_to @post.user.name, user_path(@post.user) %></p>
       <p><%= @post.content %></p>
     </div>
