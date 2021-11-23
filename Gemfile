@@ -66,6 +66,7 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'fog-aws'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
