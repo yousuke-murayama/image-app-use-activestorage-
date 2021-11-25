@@ -1,5 +1,9 @@
 <div class="user-data">
-  <%= image_tag "/assets/default.jpeg", :size => '70x70' %>
+  <% if @user.icon? %>
+    <%= image_tag @user.icon.thumb.url, class: "user-icon" %>
+  <% else %>
+    <%= image_tag "/assets/default.jpg", size: "70x70", class: "user-icon" %>
+  <% end %>
   <h3>ユーザ名：<%= @user.name %></h3>
 </div>
 <p class="user-profile">プロフィール：<%= @user.profile %></p>

@@ -6,6 +6,9 @@
       <%= render 'layouts/error_messages', model: f.object %>
     
       <div class="form-group">
+        
+        <%= f.file_field :icon, class: 'form-control' %>
+        
         <%= f.label :name, '名前' %>
         <%= f.text_field :name, class: 'form-control' %>
       

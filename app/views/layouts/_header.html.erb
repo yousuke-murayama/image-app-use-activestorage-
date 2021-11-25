@@ -10,6 +10,7 @@
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
           <ul class="dropdown-menu">
             <li class="dropdown-item"><%= link_to 'Mypage', current_user %></li>
+            <li class="dropdown-item"><%= link_to 'プロフィールの編集', edit_user_path(current_user) %></li>
             <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
           </ul>
         </li>

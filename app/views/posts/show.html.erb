@@ -15,7 +15,11 @@
       <ul class="list-unstyled">
         <% @comments.each do |comment| %>
         <li class="media">
-          <%= image_tag "/assets/default.jpeg", :size => '70x70' %>
+          <% if comment.user.icon? %>
+            <%= image_tag comment.user.icon.thumb.url, class: "user-icon" %>
+          <% else %>
+            <%= image_tag "/assets/default.jpg", size: "70x70", class: "user-icon" %>
+          <% end %>
           <div class="media-body">
             <div class="ml-4">
               <%= link_to comment.user.name, user_path(comment.user) %>

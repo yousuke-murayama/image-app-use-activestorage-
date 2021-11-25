@@ -1,7 +1,7 @@
 <figure class="image-post">
   <% posts.each do |post| %>
     <%= link_to post_path(post) do %>
-      <%= image_tag post.image.thumb.url if post.image? %>
+      <%= image_tag post.image.url, size: '250x250' if post.image? %>
     <% end %>
   <% end %>
 </figure>
