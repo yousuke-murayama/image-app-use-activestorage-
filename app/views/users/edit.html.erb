@@ -5,11 +5,8 @@
     
     <%= form_with(model: @user, local: true) do |f| %>
     
-      <% if @user.icon? %>
-        <%= image_tag @user.icon.thumb.url, class: "user-icon" %>
-      <% else %>
-        <%= image_tag "/assets/default.jpg", size: "70x70", class: "user-icon" %>
-      <% end %>
+      <%= render 'users/icon', user: @user %>
+      
       <button type="button" class="btn btn-outline-secondary rounded-pill">
          <%= f.file_field :icon %>
       </button>
