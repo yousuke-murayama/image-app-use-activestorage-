@@ -16,4 +16,20 @@ class User < ApplicationRecord
   
   has_many :comments
   has_many :posts
+  has_many :favorites
+  has_many :like_posts, through: :favorites, source: :post, dependent: :destroy
+  
+  def add_favorite(post)
+    self.favorites.find_or_create_by(post_id: post.id)
+  end
+  
+  def unfavorite(post)
+    favorite = self.favorites.find_by(post_id: post.id)
+    favorite.destroy if favorite
+  end
+  
+  def added_favorite?(post)
+    self.like_posts.include?(post)
+  end
+  
 end

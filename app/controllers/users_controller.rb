@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :require_logged_in, only: [:show, :edit, :update]
+  before_action :require_logged_in, only: [:show, :edit, :update, :likes]
 
   def show
     @user = User.find(params[:id])
@@ -39,6 +39,10 @@ class UsersController < ApplicationController
       flash[:danger] = "変更されませんでした"
       render :edit
     end
+  end
+  
+  def likes
+    @like_posts = current_user.like_posts
   end
   
   private

@@ -5,6 +5,9 @@
       <h3>場所：<%= link_to @post.spot, maps_path %></h3>
       <p>ユーザ名：<%= link_to @post.user.name, user_path(@post.user) %></p>
       <p><%= @post.content %></p>
+      <% unless current_user == @post.user %>
+        <%= render 'favorites/favorites_button', post: @post %>
+      <% end %>
     </div>
   </div>
 </div>
