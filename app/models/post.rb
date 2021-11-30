@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   
   validates :content, presence: true, length: { maximum: 255 }
   validates :spot, presence: true, length: { maximum: 50 }
+  validates :image, presence: true
   
   belongs_to :user
   has_many :comments, dependent: :destroy
