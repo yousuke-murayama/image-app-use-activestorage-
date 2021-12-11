@@ -139,9 +139,17 @@ h1 {
 }
 
 //マップのデザイン
-#map {
-    height: 600px;
-    width: 600px;
+#gmap_wrapper {
+  width: 100%;
+  padding-top: 50%;
+  position: relative;
+  margin: auto;
+  #map {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
 }
 
 //エラーメッセージ

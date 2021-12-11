@@ -69,6 +69,7 @@ gem 'dotenv-rails'
 gem 'fog-aws'
 gem 'font-awesome-rails'
 gem 'rails-i18n'
+gem 'geocoder'
 
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'

@@ -2,7 +2,10 @@
   <%= image_tag @post.image.url, size: "400x400", class: "col-sm-6" if @post.image? %>
   <div class="media-body col-sm-6">
     <div class="post-detail">
-      <h3>場所：<%= link_to @post.spot, maps_path %></h3>
+      <h3>場所:<%= @post.spot %></h3>
+      <div id="gmap_wrapper">
+        <div id="map"></div>
+      </div>
       <p>ユーザ名：<%= link_to @post.user.name, user_path(@post.user) %></p>
       <p><%= @post.content %></p>
       <% unless current_user == @post.user %>
@@ -12,40 +15,45 @@
   </div>
 </div>
 
-<div class="col-sm-10 offset-sm-1">
-  <div class="comment-form">
-    <h3>コメント</h3>
-      <ul class="list-unstyled">
-        <% @comments.each do |comment| %>
-        <li class="media">
-          <% if comment.user.icon? %>
-            <%= image_tag comment.user.icon.thumb.url, class: "user-icon" %>
-          <% else %>
-            <%= image_tag "/assets/default.jpg", size: "70x70", class: "user-icon" %>
-          <% end %>
-          <div class="media-body">
-            <div class="ml-4">
-              <%= link_to comment.user.name, user_path(comment.user) %>
-            </div>
-            <div class="balloon">
-              <p><%= comment.content %></p>
-            </div>
-            <% if current_user == comment.user %>
-              <%= link_to "削除", comment, method: :delete, class: 'btn btn-danger ml-4' %>
-            <% end %>
-          </div>
-        </li>
-        <% end %>
-      </ul>
-  </div>
-</div>
+<%#コメント欄%>
+<%= render 'comments/comments', comments: @comments %>
+  
+  <aside class=" offset-sm-6 col-sm-4 mt-4">
+    <%= form_with(model: @comment, local: true) do |f| %>
+    <%= hidden_field_tag :post_id, @post.id %>
+      <div class="form-group mb-0">
+        <%= f.text_area :content, class: 'form-control', row: 5 %>
+      </div>
+      <%= f.submit '送信', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  </aside>
 
-<aside class=" offset-sm-6 col-sm-4 mt-4">
-  <%= form_with(model: @comment, local: true) do |f| %>
-  <%= hidden_field_tag :post_id, @post.id %>
-    <div class="form-group mb-0">
-      <%= f.text_area :content, class: 'form-control', row: 5 %>
-    </div>
-    <%= f.submit '送信', class: 'btn btn-primary btn-block' %>
-  <% end %>
-</aside>
+<script type="text/javascript">
+    function initMap() {
+
+        var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: test
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var contentString = '地名：<%= @post.spot %>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        var marker = new google.maps.Marker({
+            position:test,
+            map: map,
+            title: contentString
+        });
+
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API_KEY']%>&callback=initMap" async defer></script>
