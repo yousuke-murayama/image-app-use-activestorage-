@@ -1,11 +1,11 @@
 <% if current_user.added_favorite?(post) %>
-   <%= form_with(model: current_user.favorites.find_by(post_id: post.id), local: true, method: :delete) do |f| %>
-      <%= hidden_field_tag :post_id, post.id %>
-      	<%= f.submit "お気に入り", class: "btn btn-success" %>
-   		 <% end %>
-     <% else %>
-    <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
-      <%= hidden_field_tag :post_id, post.id %>
-        <%= f.submit "お気に入りに追加", class: "btn btn-outline-success" %>
-        <% end %>
-      <% end %>
+  <%= form_with(model: current_user.favorites.find_by(post_id: post.id), local: true, method: :delete) do |f| %>
+    <%= hidden_field_tag :post_id, post.id %>
+    <%= f.submit "お気に入り", class: "btn btn-success" %>
+  <% end %>
+<% else %>
+   <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+     <%= hidden_field_tag :post_id, post.id %>
+     <%= f.submit "お気に入りに追加", class: "btn btn-outline-success" %>
+   <% end %>
+ <% end %>
