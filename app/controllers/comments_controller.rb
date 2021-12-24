@@ -7,12 +7,12 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     @comment.post_id = @post.id
     
+    @comments = @post.comments
+    
     if @comment.save
-      flash[:success] = "コメントを送信しました"
-      redirect_back(fallback_location: root_path)
-    else 
-      flash[:danger] = "送信に失敗しました"
-      redirect_back(fallback_location: root_path)
+      render :create
+    else
+      render :error
     end
   end
 

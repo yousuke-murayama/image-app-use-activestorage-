@@ -3,6 +3,7 @@ ja:
     model:
       user: ユーザ
       post: 投稿
+      comment: コメント
     attributes:
       user:
         name: ユーザ名
@@ -14,3 +15,5 @@ ja:
         spot: 場所
         content: 内容
         image: 写真
+      comment:
+        content: コメント

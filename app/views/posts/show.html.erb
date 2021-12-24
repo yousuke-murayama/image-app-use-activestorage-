@@ -16,16 +16,23 @@
 </div>
 
 <%#コメント欄%>
-<%= render 'comments/comments', comments: @comments %>
+<div id="async_comment">
+  <%= render 'comments/comments', comments: @comments %>
+</div>
   
   <aside class=" offset-sm-6 col-sm-4 mt-4">
-    <%= form_with(model: @comment, local: true) do |f| %>
-    <%= hidden_field_tag :post_id, @post.id %>
-      <div class="form-group mb-0">
-        <%= f.text_area :content, class: 'form-control', row: 5 %>
-      </div>
-      <%= f.submit '送信', class: 'btn btn-primary btn-block' %>
-    <% end %>
+    <%= form_with(model: @comment) do |f| %>
+    
+    <div class="async_error">
+      <%= render 'layouts/error_messages', model: @comment %>
+    </div>
+      
+      <%= hidden_field_tag :post_id, @post.id %>
+        <div class="form-group mb-0">
+          <%= f.text_area :content, class: 'form-control async_text', row: 5 %>
+        </div>
+        <%= f.submit '送信', class: 'btn btn-primary btn-block' %>
+      <% end %>
   </aside>
 
 <script type="text/javascript">
