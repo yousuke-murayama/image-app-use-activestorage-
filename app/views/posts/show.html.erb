@@ -3,13 +3,17 @@
   <div class="media-body col-sm-6">
     <div class="post-detail">
       <h3>場所:<%= @post.spot %></h3>
+      <%# マップ %>
       <div id="gmap_wrapper">
         <div id="map"></div>
       </div>
       <p>ユーザ名：<%= link_to @post.user.name, user_path(@post.user) %></p>
       <p><%= @post.content %></p>
+      <%# お気に入り %>
       <% unless current_user == @post.user %>
-        <%= render 'favorites/favorites_button', post: @post %>
+        <div class="favorite">
+          <%= render 'favorites/favorites_button', post: @post %>
+        </div>
       <% end %>
     </div>
   </div>
