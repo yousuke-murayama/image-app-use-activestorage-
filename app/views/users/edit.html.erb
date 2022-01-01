@@ -9,7 +9,7 @@
       <%= render 'users/icon', user: @user %>
       
       <button type="button" class="btn btn-outline-secondary rounded-pill">
-         <%= f.file_field :icon %>
+         <%= f.file_field :icon, id: "preview_icon" %>
       </button>
       
       <div class="form-group">
